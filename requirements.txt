@@ -1,0 +1,22 @@
+# Databricks SDK and Connectivity
+databricks-sdk>=0.20.0          # Official Databricks SDK for Python (REST API, Jobs, Clusters, etc)
+databricks-connect>=14.0.0      # Connect to Databricks clusters from local environment (optional)
+
+# Spark and Data Processing
+pyspark>=3.5.0                  # Apache Spark for local development (match with Databricks Runtime version)
+pandas>=2.0.0                   # Data manipulation and analysis
+pyarrow>=14.0.0                 # Efficient data interchange (required for pandas/Spark integration)
+
+# Configuration and Environment
+python-dotenv>=1.0.0            # Load environment variables from .env file
+
+# Testing
+pytest>=7.4.0                   # Testing framework
+pytest-cov>=4.1.0               # Coverage plugin for pytest
+
+# Code Quality
+ruff>=0.1.0                     # Fast Python linter and formatter
+mypy>=1.7.0                     # Static type checker
+
+# Utilities
+requests>=2.31.0                # HTTP library (useful for API interactions)
