@@ -1,6 +1,6 @@
 # NYC Taxi Study - Pipeline de Dados
 
-Projeto de estudo que processa dados de táxis amarelos de Nova York (NYC TLC) através de uma pipeline batch com orientação a objetos.
+Projeto que processa dados de táxis amarelos de Nova York (NYC TLC) através de uma pipeline batch com orientação a objetos.
 
 ## Visão Geral
 
