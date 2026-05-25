@@ -219,7 +219,59 @@ ORDER BY data DESC;
    ```
 4. Dados parquet de Janeiro a Maio de 2023 disponíveis no volume
 
-## Execução
+## Deployment
+
+Este projeto usa **Databricks Asset Bundles (DAB)** para gerenciar deployment de código e jobs.
+
+### Quick Start
+
+```bash
+# 1. Instalar Databricks CLI
+curl -fsSL https://raw.githubusercontent.com/databricks/setup-cli/main/install.sh | sh
+
+# 2. Configurar autenticação
+databricks configure --token
+
+# 3. Deploy para dev
+./scripts/deploy.sh dev
+
+# 4. Executar job
+./scripts/run-job.sh dev
+```
+
+### Documentação Completa
+
+Consulte [DATABRICKS_DEPLOYMENT.md](./DATABRICKS_DEPLOYMENT.md) para:
+- Configuração detalhada de autenticação
+- Deployment local e CI/CD
+- Troubleshooting
+- Best practices
+
+### Estrutura de Deployment
+
+```
+databricks.yml              # Configuração principal do bundle
+resources/
+  └── wf_yellow_trip_data.yaml  # Definição do job
+scripts/
+  ├── deploy.sh             # Script de deployment
+  └── run-job.sh            # Script para executar jobs
+.github/workflows/
+  └── deploy-databricks-bundle.yaml  # CI/CD automático
+```
+
+### Ambientes
+
+- **dev**: Desenvolvimento com schedules pausados
+- **prod**: Produção com permissões e schedules ativos
+
+### CI/CD Automático
+
+- Push para `develop` → Deploy automático para dev
+- Push para `main` → Deploy automático para prod
+- Pull Request → Validação apenas
+
+## Execução Manual (Databricks UI)
 
 ### Bronze
 ```python

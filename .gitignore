@@ -251,3 +251,14 @@ pipeline/get_data_ny_tlc_lambda_to_s3/layer/python/
 *~
 pipeline/get_data_ny_tlc_lambda_to_s3/layer
 terraform/get_data_ny_tlc_lambda_to_s3/.terraform.lock.hcl
+
+# Databricks Asset Bundles
+.databricks/
+.bundle/
+*.bundle.lock
+.databricks.yml.lock
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride

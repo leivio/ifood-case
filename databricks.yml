@@ -1,0 +1,48 @@
+# Databricks Asset Bundle Configuration
+bundle:
+  name: ifood-case
+
+include:
+  - resources/*.yaml
+
+workspace:
+  root_path: /Workspace/ifood-case
+
+sync:
+  include:
+    - src/**
+  exclude:
+    - "**/.DS_Store"
+    - "**/__pycache__"
+    - "**/*.pyc"
+
+targets:
+  dev:
+    mode: development
+    workspace:
+      host: https://9999999999.cloud.databricks.com
+    
+    resources:
+      jobs:
+        wf_yellow_trip_data:
+          name: "[DEV] wf_yellow_trip_data"
+          schedule:
+            pause_status: PAUSED
+
+  prod:
+    mode: production
+    workspace:
+      host: https://9999999999.cloud.databricks.com
+    
+    resources:
+      jobs:
+        wf_yellow_trip_data:
+          name: "[PROD] wf_yellow_trip_data"
+          
+          permissions:
+            - level: CAN_VIEW
+              group_name: users
+            - level: CAN_MANAGE_RUN
+              group_name: data-engineers
+            - level: IS_OWNER
+              group_name: admins

@@ -1,0 +1,27 @@
+resources:
+  jobs:
+    wf_yellow_trip_data:
+      name: wf_yellow_trip_data
+      
+      tasks:
+        - task_key: bronze_yellow_trip_data
+          notebook_task:
+            notebook_path: ${workspace.root_path}/src/data_extraction/bronze/yellow_trip_data.py
+            source: WORKSPACE
+        
+        - task_key: silver_yellow_trip_data
+          depends_on:
+            - task_key: bronze_yellow_trip_data
+          notebook_task:
+            notebook_path: ${workspace.root_path}/src/data_extraction/silver/yellow_trip_data.py
+            source: WORKSPACE
+        
+        - task_key: gold_yellow_trip_data
+          depends_on:
+            - task_key: silver_yellow_trip_data
+          notebook_task:
+            notebook_path: ${workspace.root_path}/src/data_extraction/gold/yellow_trip_data.py
+            source: WORKSPACE
+      
+      max_concurrent_runs: 1
+      timeout_seconds: 0
